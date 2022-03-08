@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Deklarasi variabel untuk menyimpan email dan password
     String nama, password;
-    String correct_edemail = "febriyanti@gmail.com";
-    String correct_edpassword = "behappy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +43,42 @@ public class MainActivity extends AppCompatActivity {
                 //Menyimpan input user di edittext password kedalam variabel password
                 password = edpassword.getText().toString();
 
+                //mengeset email yang benar
+                String email = "admin@mail.com";
+
+                //mengeset password yang benar
+                String pass = "123";
+
                 //Membuat validasi Login inputan user
-                if(nama.equals(correct_edemail) && (password.equals(correct_edpassword))){
+                if(nama.equals(email) && password.equals(pass)) {
                     Toast.makeText(getApplicationContext(), "Login Sukses", Toast.LENGTH_SHORT).show();
+
+                    //Membuat objek bundle
+                    Bundle b = new Bundle();
+
+                    //memasukkan value dari variabel nama dengan kunci "a" dan dimasukkan kedalam bundle
+                    b.putString("a", nama.trim());
+
+                    //memasukkan value dari variabel nama dengan kunci "b" dan dimasukkan kedalam bundle
+                    b.putString("b", password.trim());
+
+                    //Membuat objek intent berpindah activity dari mainactivity ke ActivityHasil
+                    Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+
+                    //Memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
+                    i.putExtras(b);
+
+                    //berpindah ke ActivityHasil
+                    startActivity(i);
+
+                    //Menghapus isi dari textview
+                    edemail.getText().clear();
+                    edpassword.getText().clear();
                 }
-                else if (nama.equals(correct_edemail)){
+                else if (nama.equals(email)){
                     Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
                 }
-                else if (password.equals(correct_edpassword)){
+                else if (password.equals(pass)){
                     Toast.makeText(getApplicationContext(), "Email Salah", Toast.LENGTH_SHORT).show();
                 }
                 else{
