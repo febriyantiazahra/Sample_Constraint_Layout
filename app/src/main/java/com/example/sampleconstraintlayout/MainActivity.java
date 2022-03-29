@@ -1,6 +1,5 @@
 package com.example.sampleconstraintlayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Menghubungkan variabel btnLogin dengan componen button pada layout
-        btnLogin=findViewById(R.id.btSignIn);
+        btnLogin = findViewById(R.id.btSignIn);
 
         //Menghubungkan variabel edemail dengan componen button pada layout
-        edemail=findViewById(R.id.edEmail);
+        edemail = findViewById(R.id.edEmail);
 
         //Menghubungkan variabel edPassword dengan componen button pada layout
-        edpassword=findViewById(R.id.edPassword);
+        edpassword = findViewById(R.id.edPassword);
 
         //Membuat fungsi onclick pada button btnLogin
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 String pass = "123";
 
                 //Membuat validasi Login inputan user
-                if(nama.equals(email) && password.equals(pass)) {
+                if (nama.equals(email) && password.equals(pass)) {
                     Toast.makeText(getApplicationContext(), "Login Sukses", Toast.LENGTH_SHORT).show();
 
                     //Membuat objek bundle
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     b.putString("b", password.trim());
 
                     //Membuat objek intent berpindah activity dari mainactivity ke ActivityHasil
-                    Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+                    Intent i = new Intent(getApplicationContext(), Home_Activity.class);
 
                     //Memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
                     i.putExtras(b);
@@ -77,14 +76,11 @@ public class MainActivity extends AppCompatActivity {
                     //Menghapus isi dari textview
                     edemail.getText().clear();
                     edpassword.getText().clear();
-                }
-                else if (nama.equals(email)){
+                } else if (nama.equals(email)) {
                     Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
-                }
-                else if (password.equals(pass)){
+                } else if (password.equals(pass)) {
                     Toast.makeText(getApplicationContext(), "Email Salah", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Email dan Password Salah", Toast.LENGTH_SHORT).show();
                 }
             }

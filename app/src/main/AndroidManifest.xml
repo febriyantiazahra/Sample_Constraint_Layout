@@ -17,6 +17,12 @@
             android:label="@string/label2"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".ActivityLihatData"
+            android:parentActivityName=".Home_Activity" />
+        <activity
+            android:name=".Home_Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
